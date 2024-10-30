@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "biblioteca",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "tu_usuario",
+    "password": "tu_contraseña",
+    "database": "nombre_de_base_de_datos_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "tu_usuario",
+    "password": "tu_contraseña",
+    "database": "nombre_de_base_de_datos_prod",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
