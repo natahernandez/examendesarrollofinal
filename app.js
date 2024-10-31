@@ -29,9 +29,16 @@ const swaggerOptions = {
             version: '1.0.0',
             description: 'API RESTful con estructura MVC documentada con Swagger',
         },
+        servers: [
+            {
+                url: 'https://api-examen-final.onrender.com', // URL de tu API
+                description: 'Servidor principal'
+            },
+        ],
     },
     apis: ['./routes/*.js'], // Documentar desde las rutas
 };
+
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
