@@ -1,13 +1,21 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const cors = require('cors');
 
 // Middlewares
 app.use(express.json());
 
 // Importar rutas principales
 const routes = require('./routes'); 
-app.use('/api', routes); // Rutas de API principal
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, 
+  }));
+app.use('/api', routes); 
+
+
 
 // Configuración de Swagger
 const swaggerUi = require('swagger-ui-express');
