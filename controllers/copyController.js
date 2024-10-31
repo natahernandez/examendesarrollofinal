@@ -23,6 +23,20 @@ exports.getAllCopies = async (req, res) => {
   }
 };
 
+exports.getCopyByBookId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const copies = await Copy.findAll({ where: { bookId: id }, include: [{ model: Book, as: 'book' }] });
+    if (!copies) {
+      return res.status(404).json({ error: 'Copias no encontradas.' });
+    }
+    res.status(200).json(copies);
+  } catch (error) {
+    console.error("Error al obtener las copias:", error);
+    res.status(500).json({ error: 'Error al obtener las copias.' });
+  }
+};
+
 // Obtener una copia por ID
 exports.getCopyById = async (req, res) => {
   try {

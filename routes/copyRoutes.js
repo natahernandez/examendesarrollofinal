@@ -58,6 +58,29 @@ router.get('/copies', copyController.getAllCopies);
 
 /**
  * @swagger
+ * /api/copies/book/{id}:
+ *   get:
+ *     summary: Obtener copias por ID del libro
+ *     tags: [Copies]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID del libro
+ *     responses:
+ *       200:
+ *         description: Lista de copias del libro especificado
+ *       404:
+ *         description: Copias no encontradas
+ *       500:
+ *         description: Error al obtener las copias
+ */
+router.get('/copies/book/:id', copyController.getCopyByBookId);
+
+/**
+ * @swagger
  * /api/copies/{id}:
  *   get:
  *     summary: Obtener una copia por ID
