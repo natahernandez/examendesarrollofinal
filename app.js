@@ -31,7 +31,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'https://api-examen-final.onrender.com', // URL de tu API
+                url: 'https://examendesarrollofinal.onrender.com/', 
                 description: 'Servidor principal'
             },
         ],
