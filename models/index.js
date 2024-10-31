@@ -9,12 +9,14 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const db = {};
 
+// Configuración de conexión a la base de datos
 const config = {
   username: process.env.DB_USERNAME,    
   password: process.env.DB_PASSWORD,  
   database: process.env.DB_DATABASE,  
   host: process.env.DB_HOST,       
-  dialect: process.env.DB_DIALECT,   
+  dialect: process.env.DB_DIALECT,
+  port: process.env.DB_PORT || 5432, // Añade el puerto aquí, 5432 es el puerto por defecto de PostgreSQL
 };
 
 let sequelize;
@@ -26,6 +28,7 @@ if (process.env.DB_URL) {
   sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: config.dialect,
+    port: config.port, // Agrega el puerto a la configuración
   });
 }
 
