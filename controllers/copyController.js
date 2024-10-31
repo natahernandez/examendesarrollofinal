@@ -7,6 +7,7 @@ exports.createCopy = async (req, res) => {
     const copy = await Copy.create({ status, location, bookId });
     res.status(201).json(copy);
   } catch (error) {
+    console.error("Error al crear la copia:", error); // Depuración
     res.status(500).json({ error: 'Error al crear la copia.' });
   }
 };
@@ -17,6 +18,7 @@ exports.getAllCopies = async (req, res) => {
     const copies = await Copy.findAll({ include: [{ model: Book, as: 'book' }] });
     res.status(200).json(copies);
   } catch (error) {
+    console.error("Error al obtener las copias:", error);
     res.status(500).json({ error: 'Error al obtener las copias.' });
   }
 };
@@ -31,6 +33,7 @@ exports.getCopyById = async (req, res) => {
     }
     res.status(200).json(copy);
   } catch (error) {
+    console.error("Error al obtener la copia:", error);
     res.status(500).json({ error: 'Error al obtener la copia.' });
   }
 };
@@ -50,6 +53,7 @@ exports.updateCopy = async (req, res) => {
     await copy.save();
     res.status(200).json(copy);
   } catch (error) {
+    console.error("Error al actualizar la copia:", error);
     res.status(500).json({ error: 'Error al actualizar la copia.' });
   }
 };
@@ -65,7 +69,7 @@ exports.deleteCopy = async (req, res) => {
     await copy.destroy();
     res.status(200).json({ message: 'Copia eliminada.' });
   } catch (error) {
+    console.error("Error al eliminar la copia:", error);
     res.status(500).json({ error: 'Error al eliminar la copia.' });
   }
 };
-

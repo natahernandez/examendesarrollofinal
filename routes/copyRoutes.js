@@ -13,7 +13,7 @@ const copyController = require('../controllers/copyController');
  * @swagger
  * /api/copies:
  *   post:
- *     summary: Crear una nueva copia de un libro
+ *     summary: Crear una nueva copia
  *     tags: [Copies]
  *     requestBody:
  *       required: true
@@ -24,15 +24,15 @@ const copyController = require('../controllers/copyController');
  *             properties:
  *               status:
  *                 type: string
- *                 description: Estado de la copia (ej. disponible, prestado)
- *                 example: disponible
+ *                 description: Estado de la copia
+ *                 example: "disponible"
  *               location:
  *                 type: string
  *                 description: Ubicación de la copia en la biblioteca
- *                 example: Estante A3
+ *                 example: "Estante A"
  *               bookId:
  *                 type: integer
- *                 description: ID del libro asociado
+ *                 description: ID del libro al que pertenece la copia
  *                 example: 1
  *     responses:
  *       201:
@@ -46,31 +46,11 @@ router.post('/copies', copyController.createCopy);
  * @swagger
  * /api/copies:
  *   get:
- *     summary: Obtener todas las copias de libros
+ *     summary: Obtener todas las copias
  *     tags: [Copies]
  *     responses:
  *       200:
  *         description: Lista de todas las copias
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: integer
- *                   status:
- *                     type: string
- *                   location:
- *                     type: string
- *                   bookId:
- *                     type: integer
- *                   book:
- *                     type: object
- *                     properties:
- *                       title:
- *                         type: string
  *       500:
  *         description: Error al obtener las copias
  */
@@ -92,19 +72,6 @@ router.get('/copies', copyController.getAllCopies);
  *     responses:
  *       200:
  *         description: Copia encontrada
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 id:
- *                   type: integer
- *                 status:
- *                   type: string
- *                 location:
- *                   type: string
- *                 bookId:
- *                   type: integer
  *       404:
  *         description: Copia no encontrada
  *       500:

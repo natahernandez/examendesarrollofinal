@@ -6,10 +6,9 @@ const copyRoutes = require('./copyRoutes');
 const bookRoutes = require('./bookRoutes'); // Agrega las rutas de libro
 
 // Usa las rutas de géneros, usuarios, copias y libros
-router.use('/api', genreRoutes);
-router.use('/api', userRoutes);
-router.use('/api', copyRoutes);
-router.use('/api', bookRoutes); 
+router.use( genreRoutes);
+router.use( userRoutes);
+router.use( copyRoutes);
+router.use( bookRoutes); 
 
 module.exports = router;
-
