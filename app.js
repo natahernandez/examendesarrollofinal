@@ -9,13 +9,11 @@ app.use(express.json());
 // Importar rutas principales
 const routes = require('./routes'); 
 app.use(cors({
-    origin: ['http://localhost:5173', 'https://examenwebfinal.netlify.app/'],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, 
-  }));
+    origin: ['http://localhost:5173', 'https://examenwebfinal.netlify.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    credentials: true
+}));
 app.use('/api', routes); 
-
-
 
 // Configuración de Swagger
 const swaggerUi = require('swagger-ui-express');
@@ -38,7 +36,6 @@ const swaggerOptions = {
     },
     apis: ['./routes/*.js'], // Documentar desde las rutas
 };
-
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
